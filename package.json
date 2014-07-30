@@ -10,6 +10,15 @@
     "type": "git",
     "url": "https://github.com/sogko/arangojs-extended.git"
   },
+  "keywords": [
+    "arango",
+    "arangodb",
+    "arangojs",
+    "revision",
+    "version",
+    "history",
+    "extended"
+  ],
   "author": {
     "name": "Hafiz Ismail",
     "email": "hafiz@wehavefaces.net",
