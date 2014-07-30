@@ -1,6 +1,6 @@
 {
   "name": "arangojs-extended",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "arangojs-extended =================",
   "main": "index.js",
   "scripts": {
