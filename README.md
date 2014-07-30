@@ -75,9 +75,9 @@ To open up possibility for more custom extended APIs, the implementation was des
 ### TrackedCollection
 * Internally, a ```trackedCollection``` has an associated ```*_history``` and ```*_edges``` collection associated with it.
 * For e.g, ```db.trackedCollection.create('col1', ...);``` will create the following collections in ArangoDB:
-    # col1
-    # col1_history
-    # col1_edges (an edges collection)
+    * col1
+    * col1_history
+    * col1_edges (an edges collection)
 * The additional two collections will be used to track revision history for documents in that collection
 
 ### TrackedDocument
@@ -96,6 +96,10 @@ To open up possibility for more custom extended APIs, the implementation was des
                                         '--> doc.revision(1);
 ```
 
+## Tests
+
+```npm test```
+
 
 ## TODO
 * expose APIs to manage revision history
@@ -103,3 +107,18 @@ To open up possibility for more custom extended APIs, the implementation was des
     * return a particular revision or HEAD revision for a document
     * allow traversal of revision history from a particular revision point (linked list)
 * write tests for cases when a trying to create a trackedDocument in a vanilla collection
+
+## Known Issues
+
+## Credits
+
+* [Hafiz Ismail](https://github.com/sogko) 
+
+## Links
+* [wehavefaces.net](http://wehavefaces.net)
+* [twitter.com/sogko](https://twitter.com/sogko)
+* [github.com/sogko](https://github.com/sogko)
+* [medium.com/@sogko](https://medium.com/@sogko)
+
+## License
+Copyright (c) 2014 Hafiz Ismail. This software is licensed under the [MIT License](https://github.com/sogko/arangojs-extended/raw/master/LICENSE).
