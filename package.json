@@ -1,6 +1,6 @@
 {
   "name": "arangojs-extended",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extended APIs for ArangoJS (an ArangoDB Javascript driver)",
   "main": "index.js",
   "scripts": {
