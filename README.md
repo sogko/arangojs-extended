@@ -1,7 +1,8 @@
 arangojs-extended
 =================
 
-```arangojs-extended```: Extended APIs for [ArangoJS driver](https://github.com/triAGENS/ArangoDB-JavaScript)
+Extended APIs for [ArangoJS driver](https://github.com/triAGENS/ArangoDB-JavaScript)
+Currently, this library features an extension to enable collections with revision history for its documents.
 
 ## Install
 ```npm install arangojs-extended```
