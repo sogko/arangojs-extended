@@ -1,18 +1,23 @@
 var _ = require('lodash');
 var should = require('should');
 var async = require('async');
-var ArangoExtended = require('../../../index');
+var ArangoExtended = require('../../../../index');
+var config = require('./../../../config');
+var DatabaseSupport = require('../../../support/database');
 
-var db = ArangoExtended.Connection('http://localhost:8529/');
+var db = DatabaseSupport.connect();
 var collection_name = 'testCollection';
 
 describe('db.trackedDocument', function () {
 
+  before(function(done) {
+    DatabaseSupport.useTestDatabase(db, done);
+  });
+
   beforeEach(function(done) {
     async.series([
       function (next) {
-        db.trackedCollection.delete(collection_name, next);
-
+        DatabaseSupport.truncateDatabase(db, next);
       },
       function (next) {
         db.trackedCollection.create(collection_name, next);

@@ -1,9 +1,8 @@
 var _ = require('lodash');
 var should = require('should');
-var async = require('async');
-var arango = require('../../../index');
-
-var db = arango.Connection('http://localhost:8529/');
+var ArangoExtended = require('../../../index');
+var DatabaseSupport = require('../../support/database');
+var db = DatabaseSupport.connect();
 
 describe('arango-extended', function () {
 
@@ -14,5 +13,4 @@ describe('arango-extended', function () {
     db.should.have.enumerable('trackedDocument');
     done();
   });
-
 });

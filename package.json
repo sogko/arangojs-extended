@@ -4,7 +4,7 @@
   "description": "Extended APIs for ArangoJS (an ArangoDB Javascript driver)",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/mocha/**/*.js --reporter spec"
+    "test": "mocha --recursive test/mocha/ --reporter spec"
   },
   "repository": {
     "type": "git",
