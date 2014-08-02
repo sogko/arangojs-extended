@@ -35,7 +35,21 @@ db.document.create('collection1', { name: 'new document' }, ...);
 ## Extended APIs
 In addition to the [APIs in available in ArangoJS](https://github.com/triAGENS/ArangoDB-JavaScript#api), the following extended APIs are available
 
+### Revision (db.revision)
+* list(document_id, opts, cb))
+    * Lists ordered revisions keys for a tracked document
+* latest(document_id, cb)
+    * Retrieves latest revision key for a tracked document
+* get(collection_name, revision, cb)
+    * Retrieves a revision state of a tracked document in a tracked collection
+* previous(collection_name, revision, cb)
+    * Retrieves previous revision state relative to given revision key for a tracked document
+* next(collection_name, revision, cb)
+    * Retrieves next revision state relative to given revision key for a tracked document
+
 ### TrackedCollection (db.trackedCollection)
+* list(excludeSystem cb))
+    * Lists tracked collections
 * create(collection_name, opts, cb)
     * Creates a tracked collection that has its document revision history enabled
 * get(id, cb)
@@ -52,7 +66,7 @@ In addition to the [APIs in available in ArangoJS](https://github.com/triAGENS/A
     * Creates a document in a tracked collection.
     * If data has ```._key``` specified and it belongs to an an existing document in the collection, the document will then be replaced with the data and a new revision point will be created if data has changed.
 * get(id, opt, cb)
-    * Retrieves a document from a tracked collection (an aliast to db.document.get)
+    * Retrieves a document from a tracked collection (an alias to db.document.get)
 * exists(id, cb)
     * Checks if a document exists
 * put(id, data, opt, cb)
@@ -86,7 +100,7 @@ To open up possibility for more custom extended APIs, the implementation was des
 ### TrackedDocument
 * Each ```trackedDocument``` will have an edge (type:headRevision) pointing to its HEAD revision (current revision)
 * Each revision will have an edge (type:prevRevision) pointing to the previous revision, creating a linked list of revisions. This allows linearly traversing through revision history.
-* In addition to that, each revision will have an edge to it the primary document.
+* In addition to that, each revision will have an edge to it the primary document (type:revision).
 * Revisions for a document for a collection are stored in ```*_history``` collection
 * Revision edges for a document are stored in ```*_edges``` collection
 
@@ -105,13 +119,9 @@ To open up possibility for more custom extended APIs, the implementation was des
 npm test
 ```
 
-
 ## TODO
-* expose APIs to manage revision history
-    * return a list of revisions for a tracked document
-    * return a particular revision or HEAD revision for a document
-    * allow traversal of revision history from a particular revision point (linked list)
-* write tests for cases when a trying to create a trackedDocument in a vanilla collection
+* write tests for scenarios when a trying to create a trackedDocument in a vanilla collection
+* write tests for scenarios when trying to get revisions for a vanilla document
 
 ## Known Issues
 
