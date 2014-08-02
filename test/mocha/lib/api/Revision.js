@@ -327,7 +327,7 @@ describe('db.revision', function () {
   });
 
   describe('previous(collection_name, revision, cb)', function () {
-    it('should return error if document does not exists', function (done) {
+    it('should return error if revision does not exists', function (done) {
       db.revision.previous(collection_name, 'nonExistingDocumentId', function (err, results) {
         should.exists(err);
         should.exists(results);
@@ -448,7 +448,7 @@ describe('db.revision', function () {
   });
 
   describe('next(collection_name, revision, cb)', function () {
-    it('should return error if document does not exists', function (done) {
+    it('should return error if revision does not exists', function (done) {
       db.revision.next(collection_name, 'nonExistingDocumentId', function (err, results) {
         should.exists(err);
         should.exists(results);
