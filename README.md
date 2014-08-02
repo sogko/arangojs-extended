@@ -5,7 +5,9 @@ Extended APIs for [ArangoJS driver](https://github.com/triAGENS/ArangoDB-JavaScr
 Currently, this library features an extension to enable collections with revision history for its documents.
 
 ## Install
-```npm install arangojs-extended```
+```
+npm install arangojs-extended
+```
 
 ## Usage
 Same usage experience as ArangoJS
@@ -99,7 +101,9 @@ To open up possibility for more custom extended APIs, the implementation was des
 
 ## Tests
 
-```npm test```
+```
+npm test
+```
 
 
 ## TODO
