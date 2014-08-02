@@ -3,8 +3,6 @@ var _ = require('lodash');
 var Utils = require('./../../../../lib/utils');
 var should = require('should');
 var async = require('async');
-var ArangoExtended = require('../../../../index');
-var config = require('./../../../config');
 var DatabaseSupport = require('../../../support/database');
 
 var db = DatabaseSupport.connect();
