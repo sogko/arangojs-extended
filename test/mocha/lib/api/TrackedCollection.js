@@ -21,8 +21,8 @@ describe('db.trackedCollection', function () {
   it('should exposed expected members/methods', function (done) {
     db.trackedCollection.should.have.properties([
       'collectionNames',
-      'create', 'get',
-      'delete', 'truncate'
+      'create', 'get', 'list',
+      'delete', 'truncate', 'count'
     ]);
     done();
   });

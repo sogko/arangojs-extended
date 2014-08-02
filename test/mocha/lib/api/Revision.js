@@ -26,7 +26,7 @@ describe('db.revision', function () {
   });
 
   it('should exposed expected members/methods', function (done) {
-    db.revision.should.have.properties(['list']);
+    db.revision.should.have.properties(['list', 'get', 'latest', 'previous', 'next']);
     done();
   });
 
