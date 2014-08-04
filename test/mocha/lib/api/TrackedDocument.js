@@ -156,6 +156,64 @@ describe('db.trackedDocument', function () {
       });
     });
 
+    it('should update document if document._key already exists and has changes (new attribute) ; should return related documents and edges', function (done) {
+
+      var results;
+
+      var data = {
+        _key: 'uniqueKey-120-313-42343',
+        name: 'test data name',
+        description: 'test description'
+      };
+
+      var changed_data = {
+        _key: 'uniqueKey-120-313-42343',
+        description: 'changed description',
+        new_attribute: 'value 123'
+      };
+
+      async.series([
+        function saveNewDocument(next) {
+          db.trackedDocument.create(collection_name, data, function (err, res) {
+            results = res;
+            should.not.exists(err);
+            should.exists(results);
+            results.should.have.length(1);
+
+            assertNewDocumentResultsProperties(results[0]);
+            next();
+          });
+        },
+        function _assertDocumentKeys(next) {
+          assertDocumentKeys(results[0], data, next);
+        },
+        function _assertDocumentContent(next) {
+          assertDocumentContent(results[0], data, next);
+        },
+        function saveSameDocumentWithChanges(next) {
+          db.trackedDocument.create(collection_name, changed_data, function (err, res) {
+            results = res;
+
+            should.not.exists(err);
+            should.exists(results);
+            results.should.have.length(1);
+
+            assertRevisedDocumentResultsProperties(results[0]);
+            next();
+          });
+        },
+        function _assertDocumentKeys(next) {
+          assertDocumentKeys(results[0], changed_data, next);
+        },
+        function _assertDocumentContent(next) {
+          assertDocumentContent(results[0], changed_data, next);
+        }
+      ], function (err) {
+        done(err);
+      });
+    });
+
+
     it('should not update document if document._key already exists and has no changes; should return zero documents', function (done) {
 
       var results;
