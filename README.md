@@ -64,7 +64,7 @@ In addition to the [APIs in available in ArangoJS](https://github.com/triAGENS/A
 ### TrackedDocument (db.trackedDocument)
 * create(collection, data, opt, cb)
     * Creates a document in a tracked collection.
-    * If data has ```._key``` specified and it belongs to an an existing document in the collection, the document will then be replaced with the data and a new revision point will be created if data has changed.
+    * If data has ```._key``` specified and it belongs to an existing document in the collection, the document will then be replaced with the data and a new revision point will be created if data has changed.
 * get(id, opt, cb)
     * Retrieves a document from a tracked collection (an alias to db.document.get)
 * exists(id, cb)
